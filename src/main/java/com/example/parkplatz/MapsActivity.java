@@ -9,6 +9,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -25,6 +26,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
+    private GoogleMap mMap;
+
+    private GoogleMap mMap;
+    private LatLngBounds AUSTRALIA = new LatLngBounds(
+            new LatLng(-44, 113), new LatLng(-10, 154));
+
+    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AUSTRALIA.getCenter(), 10));
+
+
 
     /**
      * Manipulates the map once available.
@@ -39,17 +49,53 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng BH_Parking = new LatLng(46.9496, 7.4384);
-        mMap.addMarker(new MarkerOptions().position(BH_Parking).title("Bahnhof Parking"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(BH_Parking));
 
-        LatLng BH_Kr_Parking = new LatLng(46.9496, 7.4384);
-        mMap.addMarker(new MarkerOptions().position(BH_Kr_Parking).title("Bahnhof Kurz Parking"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(BH_Kr_Parking));
+        // Add a marker and move the camera
+        // Kurs = Kursaal
+        // PR = Park+Ride
+        // Cas = casino
+        // Mobi = Mobiliar
+        // CW = City West
+        // Amag = amag Rathaus Parking
+        // BH = Bahnhof
+        LatLng BH_Parking = new LatLng(46.9496, 7.4384);
+        mMap.addMarker(new MarkerOptions().position(BH_Parking).title("Bahnhof Parking / Kurzparking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(BH_Parking));
 
         LatLng PostParc = new LatLng(46.9482, 7.4374);
         mMap.addMarker(new MarkerOptions().position(PostParc).title("PostParc"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(PostParc));
+
+        LatLng Metro_Parking = new LatLng(46.9500, 7.4450);
+        mMap.addMarker(new MarkerOptions().position(Metro_Parking).title("Metro Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Metro_Parking));
+
+        LatLng Amag_Parking = new LatLng(46.9490, 7.4518);
+        mMap.addMarker(new MarkerOptions().position(Amag_Parking).title("amag Rathaus Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Amag_Parking));
+
+        LatLng CW_Parking = new LatLng(46.9466, 7.4343);
+        mMap.addMarker(new MarkerOptions().position(CW_Parking).title("City West Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(CW_Parking));
+
+        LatLng Mobi_Parking = new LatLng(46.9450, 7.4383);
+        mMap.addMarker(new MarkerOptions().position(Mobi_Parking).title("Mobiliar Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Mobi_Parking));
+
+        LatLng Cas_Parking = new LatLng(46.9468, 7.4478);
+        mMap.addMarker(new MarkerOptions().position(Cas_Parking).title("Casino Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Cas_Parking));
+
+        LatLng Expo_Parking = new LatLng(46.9568, 7.4683);
+        mMap.addMarker(new MarkerOptions().position(Expo_Parking).title("Expo Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Expo_Parking));
+
+        LatLng PR_Neuenfeld = new LatLng(46.9635, 7.4319);
+        mMap.addMarker(new MarkerOptions().position(PR_Neuenfeld).title("Park+Ride Neuenfeld"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(PR_Neuenfeld));
+
+        LatLng Kurs_Parking = new LatLng(46.9534, 7.4486);
+        mMap.addMarker(new MarkerOptions().position(Kurs_Parking).title("Expo Parking"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Kurs_Parking));
     }
 }
