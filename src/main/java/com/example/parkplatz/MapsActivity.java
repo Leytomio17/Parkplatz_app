@@ -26,13 +26,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
     }
 
-    private GoogleMap mMap;
-
-    private GoogleMap mMap;
-    private LatLngBounds AUSTRALIA = new LatLngBounds(
-            new LatLng(-44, 113), new LatLng(-10, 154));
-
-    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AUSTRALIA.getCenter(), 10));
 
 
 
@@ -48,6 +41,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        LatLngBounds SWITZERLAND = new LatLngBounds(
+                new LatLng(-44, 113), new LatLng(-10, 154));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(SWITZERLAND.getCenter(), 10));
+
+        // Create a LatLngBounds that includes the city of Bern in Switzerland.
+        LatLngBounds Bern = new LatLngBounds(
+                new LatLng(46.94, 7.43), new LatLng(47, 7.61));
+    // Constrain the camera target to the Bern bounds.
+        mMap.setLatLngBoundsForCameraTarget(Bern);
+
+        // Set a preference for minimum and maximum zoom.
+        mMap.setMinZoomPreference(13.0f);
+        mMap.setMaxZoomPreference(17.0f);
 
 
         // Add a marker and move the camera
