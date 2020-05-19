@@ -3,6 +3,8 @@ package com.example.parkplatz;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,11 +12,22 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.json.JSONObject;
+
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
+
     private GoogleMap mMap;
+    private Object Marker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +38,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
-
-
 
     /**
      * Manipulates the map once available.
@@ -57,7 +67,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMinZoomPreference(13.0f);
         mMap.setMaxZoomPreference(17.0f);
 
-
         // Add a marker and move the camera
         // Kurs = Kursaal
         // PR = Park+Ride
@@ -67,8 +76,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Amag = amag Rathaus Parking
         // BH = Bahnhof
         LatLng BH_Parking = new LatLng(46.9496, 7.4384);
-        mMap.addMarker(new MarkerOptions().position(BH_Parking).title("Bahnhof Parking / Kurzparking"));
+        mMap.addMarker(new MarkerOptions().position(BH_Parking).title("Bahnhof Parking / Kurzparking").snippet("Population: 4,137,400"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(BH_Parking));
+
 
         LatLng PostParc = new LatLng(46.9482, 7.4374);
         mMap.addMarker(new MarkerOptions().position(PostParc).title("PostParc"));
